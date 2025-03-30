@@ -148,3 +148,5 @@ WHERE total_amount > 150.00;
 
 SELECT AVG(total_amount) AS average_order_total
 FROM ORDERS;
+
+Completed....
