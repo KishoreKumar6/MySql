@@ -1,0 +1,150 @@
+-- Creating CUSTOMER Table
+CREATE TABLE CUSTOMER (
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  age INT NOT NULL,
+  email VARCHAR(50) UNIQUE NOT NULL,
+  phone_number VARCHAR(15) NOT NULL,
+  address TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO CUSTOMER (first_name, last_name, age, email, phone_number, address)
+VALUES 
+  ("kishore", "kumar", 34, "kishore@gmail.com", "9629621359", "bangalore"),
+  ("dhivya", "bharathi", 25, "dhivya@gmail.com", "9629889999", "chennai"),
+  ("kani", "mozhi", 14, "kani@gmail.com", "9629698989", "hyderabad");
+
+SELECT * FROM CUSTOMER;
+
+-- Creating PRODUCTS Table
+CREATE TABLE PRODUCTS (
+  product_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  description VARCHAR(100) NOT NULL
+);
+
+INSERT INTO PRODUCTS (name, price, description)
+VALUES
+  ("Phone", 59.44, "electronic device"),
+  ("Laptop", 159.44, "Accessories device"),
+  ("Mouse", 29.44, "For laptop device");
+
+SELECT * FROM PRODUCTS;
+
+-- Creating ORDERS Table with proper foreign key references
+CREATE TABLE ORDERS (
+  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  customer_id INT NOT NULL,
+  order_date DATE NOT NULL,
+  product_id INT NOT NULL,
+  total_amount DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES CUSTOMER(customer_id),
+  FOREIGN KEY (product_id) REFERENCES PRODUCTS(product_id)
+);
+
+INSERT INTO ORDERS (customer_id, order_date, product_id, total_amount)
+VALUES
+  (1, "2025-02-09", 1, 99.99),
+  (2, "2025-03-10", 2, 45.33),
+  (3, "2025-03-15", 3, 94.36);
+
+SELECT * FROM ORDERS;
+
+
+SELECT 
+    C.customer_id,
+    C.first_name,
+    C.last_name,
+    C.email,
+    O.order_date,
+    O.total_amount,
+    P.product_id,
+    P.name AS product_name,
+    P.price,
+    P.description
+FROM ORDERS O
+JOIN CUSTOMER C ON O.customer_id = C.customer_id
+JOIN PRODUCTS P ON O.product_id = P.product_id;
+
+-- Retrieve all customers who have placed an order in the last 30 days.
+
+SELECT DISTINCT
+    C.customer_id,
+    C.first_name,
+    C.last_name,
+    C.email,
+    DATE(O.order_date) AS order_date_only,
+    O.total_amount
+FROM CUSTOMER C
+JOIN ORDERS O ON C.customer_id = O.customer_id
+WHERE DATE(O.order_date) >= DATE_SUB(CURDATE(), INTERVAL 30 DAY);
+
+-- Get the total amount of all orders placed by each customer.
+
+SELECT 
+    C.customer_id,
+    C.first_name,
+    C.last_name,
+    SUM(O.total_amount) AS total_amount_spent
+FROM CUSTOMER AS C
+JOIN ORDERS AS O ON C.customer_id = O.customer_id
+GROUP BY C.customer_id, C.first_name, C.last_name;
+
+-- Update the price of Product C to 45.00.
+
+UPDATE PRODUCTS
+SET price = 45.00
+WHERE product_id = 3;
+
+SELECT * FROM PRODUCTS
+
+-- Add a new column discount to the products table.
+
+ALTER TABLE PRODUCTS
+ADD COLUMN discount DECIMAL(10,2);
+
+UPDATE PRODUCTS
+SET discount = price * 0.10;
+
+SELECT * FROM PRODUCTS
+
+-- Retrieve the top 3 products with the highest price.
+
+SELECT 
+   *
+FROM PRODUCTS
+ORDER BY price DESC
+LIMIT 3;
+
+-- Get the names of customers who have ordered Product A.
+
+SELECT DISTINCT
+    C.first_name,
+    C.last_name
+FROM CUSTOMER C
+JOIN ORDERS O ON C.customer_id = O.customer_id
+JOIN PRODUCTS P ON O.product_id = P.product_id
+WHERE P.name = 'Phone';
+
+-- Join the orders and customers tables to retrieve the customer's name and order date for each order. 
+
+SELECT 
+    C.first_name,
+    C.last_name,
+    O.order_date
+FROM ORDERS AS O
+JOIN CUSTOMER AS C ON O.customer_id = C.customer_id;
+
+-- Retrieve the orders with a total amount greater than 150.00.
+
+SELECT *
+FROM ORDERS
+WHERE total_amount > 150.00;
+
+-- Retrieve the average total of all orders.
+
+SELECT AVG(total_amount) AS average_order_total
+FROM ORDERS;
