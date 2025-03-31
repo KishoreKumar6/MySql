@@ -1,0 +1,315 @@
+Zen Class Programme:
+
+-- Topic
+
+zenClass> db.Topic.find()
+[
+  {
+    _id: ObjectId('67ea4eff39e00d006db15a3b'),
+    topic_name: 'MongoDB',
+    date: '2024-10-20'
+  },
+  {
+    _id: ObjectId('67ea7f8d2982d5725bc88df1'),
+    topic_name: 'javascript',
+    date: '2024-10-11'
+  },
+  {
+    _id: ObjectId('67ea7fde2982d5725bc88df2'),
+    topic_name: 'React',
+    date: '2024-11-03'
+  },
+  {
+    _id: ObjectId('67ea800d2982d5725bc88df3'),
+    'topic_name': 'Html',
+    date: '2024-12-03'
+  },
+  {
+    _id: ObjectId('67ea803b2982d5725bc88df4'),
+    topic_name: 'Css',
+    date: '2024-12-24'
+  }
+]
+
+-- Attendance
+
+zenClass> db.Attendance.find()
+[
+  {
+    _id: ObjectId('67ea1d6739e00d006db15a39'),
+    date: '2024-10-17',
+    status: 'Absent',
+    batch_id: ObjectId('67e8fea29d79e4fe17b71236')
+  },
+  {
+    _id: ObjectId('67eae60c2982d5725bc88e2f'),
+    date: '2024-10-24',
+    status: 'Absent',
+    batch_id: ObjectId('67ea85562982d5725bc88dfa')
+  },
+  {
+    _id: ObjectId('67eae6602982d5725bc88e30'),
+    date: '2024-10-14',
+    status: 'Present',
+    batch_id: ObjectId('67ea85d02982d5725bc88dfb')
+  },
+  {
+    _id: ObjectId('67eae67f2982d5725bc88e31'),
+    date: '2024-10-19',
+    status: 'Present',
+    batch_id: ObjectId('67ea86562982d5725bc88dfc')
+  }
+]
+
+
+--Codekata
+
+zenClass> db.Codekata.find()
+[
+  {
+    _id: ObjectId('67ea1a9f5cc077118cb71237'),
+    problemsSolved: 49,
+    batch_id: ObjectId('67e8fea29d79e4fe17b71236'),
+    date: '2024-12-26'
+  },
+  {
+    _id: ObjectId('67eadd992982d5725bc88e0f'),
+    problemsSolved: 47,
+    date: '2024-12-13',
+    batch_id: '67ea85562982d5725bc88dfa'
+  },
+  {
+    _id: ObjectId('67eadfab2982d5725bc88e1a'),
+    problemsSolved: 44,
+    date: '2024-11-18',
+    batch_id: '67ea85d02982d5725bc88dfb'
+  },
+  {
+    _id: ObjectId('67eae01d2982d5725bc88e20'),
+    problemsSolved: 46,
+    date: '2024-11-18',
+    batch_id: '67ea86562982d5725bc88dfc'
+  }
+]
+
+-- Company_drives
+
+zenClass> db.Company_drives.find()
+[
+  {
+    _id: ObjectId('67ea7cd12982d5725bc88dee'),
+    'Company Guvi': 'Guvi',
+    date: '2024-10-19',
+    appeared_students: [
+      ObjectId('67e8fea29d79e4fe17b71236'),
+      ObjectId('67ea85562982d5725bc88dfa')
+    ]
+  }
+]
+
+
+-- Tasks
+
+zenClass> db.Tasks.find()
+[
+  {
+    _id: ObjectId('67ea1e9639e00d006db15a3a'),
+    topic_name: 'Mongodb',
+    date: '2024-11-04',
+    submitted: false,
+    task_description: 'Complete the task',
+    batch_id: ObjectId('67e8fea29d79e4fe17b71236')
+  },
+  {
+    _id: ObjectId('67eae7bd2982d5725bc88e39'),
+    topic_name: 'Mongodb',
+    date: '2024-11-09',
+    submitted: true,
+    task_description: 'Complete the task',
+    batch_id: ObjectId('67ea85562982d5725bc88dfa')
+  },
+  {
+    _id: ObjectId('67eae85e2982d5725bc88e3f'),
+    topic_name: 'Mongodb',
+    date: '2024-11-24',
+    submitted: false,
+    task_description: 'Complete the task',
+    batch_id: ObjectId('67ea85d02982d5725bc88dfb')
+  },
+  {
+    _id: ObjectId('67eae8ab2982d5725bc88e40'),
+    topic_name: 'Mongodb',
+    date: '2024-11-14',
+    submitted: false,
+    task_description: 'Complete the task',
+    batch_id: ObjectId('67ea86562982d5725bc88dfc')
+  }
+]
+
+-- users as batch
+
+zenClass> db.batch.find()
+[
+  {
+    _id: ObjectId('67e8fea29d79e4fe17b71236'),
+    first_name: 'kishore',
+    last_name: 'kumar',
+    email: 'kishore@gmail.com',
+    createdAt: ISODate('2020-01-01T00:00:00.000Z'),
+    phone: '9629621359',
+    date: '2024-10-20'
+  },
+  {
+    _id: ObjectId('67ea85562982d5725bc88dfa'),
+    first_name: 'prasanth',
+    last_name: 'kumar',
+    email: 'prasant@gmail.com',
+    phoneNo: '9898499866',
+    date: '2024-10-20'
+  },
+  {
+    _id: ObjectId('67ea85d02982d5725bc88dfb'),
+    first_name: 'Madan',
+    last_name: 'kumar',
+    email: 'madan@gmail.com',
+    phoneNo: '9898434345',
+    date: '2024-10-20'
+  },
+  {
+    _id: ObjectId('67ea86562982d5725bc88dfc'),
+    first_name: 'Bala',
+    last_name: 'chandar',
+    email: 'bala@gmail.com',
+    phoneNo: '9898456564',
+    date: '2024-10-20'
+  },
+  {
+    _id: ObjectId('67ea86c42982d5725bc88dfd'),
+    first_name: 'Abul',
+    last_name: 'Muthaheer',
+    email: 'abdul@gmail.com',
+    phoneNo: '9898435362',
+    date: '2024-10-20'
+  }
+]
+
+-- mentors
+
+zenClass> db.mentors.find()
+[
+  {
+    _id: ObjectId('67e904c49d79e4fe17b71237'),
+    first_name: 'Alice',
+    email: 'alice@zenclass.com',
+    expertise: 'JavaScript, Node.js',
+    last_name: 'Smith',
+    phone: '9876543210',
+    mentee_count: 18
+  },
+  {
+    _id: ObjectId('67eae3412982d5725bc88e27'),
+    first_name: 'Jack',
+    email: 'jack@zenclass.com',
+    expertise: 'Mongodb, Node.js',
+    last_name: 'Son',
+    phone: '9876543210',
+    mentee_count: 14
+  },
+  {
+    _id: ObjectId('67eae3db2982d5725bc88e28'),
+    first_name: 'Jhon',
+    email: 'jhon@zenclass.com',
+    expertise: 'Expressjs, Node.js',
+    last_name: 'Son',
+    phone: '9876543210',
+    mentee_count: 16
+  }
+]
+
+
+
+
+
+Query 1:Find All Topics and Tasks Taught in the Month of October
+
+db.Topic.find({
+  date: {
+    $gte: "2024-10-01",
+    $lte: "2024-10-30"
+  }
+})
+
+{
+  _id: ObjectId('67ea7f8d2982d5725bc88df1'),
+  topic_name: 'javascript',
+  date: '2024-10-11'
+}
+{
+  _id: ObjectId('67ea4eff39e00d006db15a3b'),
+  topic_name: 'MongoDB',
+  date: '2024-10-20'
+}
+
+
+Query 2:Find All Company Drives Between 15-Oct-2020 and 31-Oct-2020
+
+db.Topic.find({
+  date: {
+    $gte: "2024-10-15",
+    $lte: "2024-10-31"
+  }
+})
+
+{
+  _id: ObjectId('67ea4eff39e00d006db15a3b'),
+  topic_name: 'MongoDB',
+  date: '2024-10-20'
+}
+
+
+Query 3: Find the Number of Problems Solved by a Specific User in Codekata
+
+db.Codekata.aggregate([
+  { 
+    $match: { batch_id: ObjectId("67e8fea29d79e4fe17b71236") } 
+  },
+  { 
+    $group: { 
+      _id: "$batch_id", 
+      totalProblemsSolved: { $sum: "$problemsSolved" }
+    }
+  }
+])
+
+{
+  _id: ObjectId('67e8fea29d79e4fe17b71236'),
+  totalProblemsSolved: 49
+}
+
+
+Query 4: Find All Mentors Whose Mentee Count Is More Than 15
+
+db.mentors.find({
+  mentee_count: { $gt: 15 }
+})
+
+{
+  _id: ObjectId('67e904c49d79e4fe17b71237'),
+  first_name: 'Alice',
+  email: 'alice@zenclass.com',
+  expertise: 'JavaScript, Node.js',
+  last_name: 'Smith',
+  phone: '9876543210',
+  mentee_count: 18
+}
+
+{
+  _id: ObjectId('67eae3db2982d5725bc88e28'),
+  first_name: 'Jhon',
+  email: 'jhon@zenclass.com',
+  expertise: 'Expressjs, Node.js',
+  last_name: 'Son',
+  phone: '9876543210',
+  mentee_count: 16
+}
+
