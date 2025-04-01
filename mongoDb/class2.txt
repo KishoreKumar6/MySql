@@ -1,0 +1,64 @@
+db.students.insertMany([
+  {
+    name: "kishore",
+    age: 25,
+    gender: "male",
+    email: "kishore@gmail.com",
+    phone: "9889877839",
+    address: "chennai",
+    enrollmentDate: new Date("2025-02-02"),
+    major: "computerscience",
+    GPA: 3.8,
+    active: true
+  },
+   {
+    name: "prasanth",
+    age: 23,
+    gender: "male",
+    email: "prasanth@gmail.com",
+    phone: "9889893758",
+    address: "bangalore",
+    enrollmentDate: new Date("2025-02-14"),
+    major: "biology",
+    GPA: 4.5,
+    active: true
+  },
+   {
+    name: "madan",
+    age: 30,
+    gender: "male",
+    email: "madan@gmail.com",
+    phone: "7896577839",
+    address: "hyderabad",
+    enrollmentDate: new Date("2025-02-24"),
+    major: "mathematics",
+    GPA: 4.2,
+    active: false
+  },
+   {
+    name: "sabeena",
+    age: 35,
+    gender: "female",
+    email: "sabeena@gmail.com",
+    phone: "8976577839",
+    address: "pune",
+    enrollmentDate: new Date("2025-02-18"),
+    major: "zoology",
+    GPA: 4.0,
+    active: true
+  },
+   {
+    name: "shalini",
+    age: 40,
+    gender: "female",
+    email: "shalini@gmail.com",
+    phone: "9374877839",
+    address: "mumbai",
+    enrollmentDate: new Date("2025-02-29"),
+    major: "physics",
+    GPA: 4.9,
+    active: false
+  }
+  ])
+
+  
