@@ -131,14 +131,14 @@ db.products.updateOne(
 )
 
 
-//increease the stock for all the products 5
+//increase the stock for all the products 5
 db.products.updateMany(
     {},
     {$inc : {stock: 5}}
 )
 
 
-// remove the product by skud
+// remove the product by sku
 db.products.deleteOne({sku: "CAM12345"})
 
 
@@ -173,7 +173,7 @@ db.products.aggregate([
     { $group : {_id: "$brand", mostExpensive: {$max: "$price"}}}
 ])
 
-// find the most expensive product in each category
+// find the min expensive product in each category
 db.products.aggregate([
     { $group : {_id: "$category", cheapest: {$min: "$price"}}}
 ])

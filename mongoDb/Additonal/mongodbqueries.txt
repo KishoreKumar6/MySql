@@ -43,7 +43,7 @@ db.students.aggregate([
 
 6) count the number of active students
 db.students.aggregate([
-    {$match: {name: "Johnson"}},
+    {$match: {active: true}},
     {$count: "activeStudentCount"}
 ]);
 
