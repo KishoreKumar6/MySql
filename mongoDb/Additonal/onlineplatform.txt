@@ -22,7 +22,7 @@ db.products.insertMany([
         ],
         shippingDetails: {
             weight: "2.5kg",
-            dimenssions: {width: "36cm", height: "25cm"},
+            dimensions: {width: "36cm", height: "25cm"},
             availableRegions: ["USA", "Canada", "Europe"]
         }
     },
@@ -47,7 +47,7 @@ db.products.insertMany([
         ],
         shippingDetails: {
             weight: "200g",
-            dimenssions: {width: "7cm", height: "15cm"},
+            dimensions: {width: "7cm", height: "15cm"},
             availableRegions: ["USA", "UK", "India"]
         }
      },
@@ -72,7 +72,7 @@ db.products.insertMany([
         ],
         shippingDetails: {
             weight: "200g",
-            dimenssions: {width: "7cm", height: "15cm"},
+            dimensions: {width: "7cm", height: "15cm"},
             availableRegions: ["USA", "UK", "India"]
         }
      },
@@ -96,7 +96,7 @@ db.products.insertMany([
         ],
         shippingDetails: {
             weight: "500g",
-            dimenssions: {width: "19cm", height: "10cm"},
+            dimensions: {width: "19cm", height: "10cm"},
             availableRegions: ["Japan", "Korea", "India"]
         }
      },
@@ -160,7 +160,7 @@ db.products.find({"warranty.period" : {$gt: "1 year}})
 db.products.find({"variants.color" : "Black"})
 
 
-// how to retieve top 2 products with the height avg ratings
+// how to retrieve top 2 products with the height avg ratings
 db.products.find().sort({"ratings.avg" : -1}).limit(2)
 
 
@@ -173,7 +173,7 @@ db.products.aggregate([
     { $group : {_id: "$brand", mostExpensive: {$max: "$price"}}}
 ])
 
-// find the min expensive product in each category
+// find the most expensive product in each category
 db.products.aggregate([
     { $group : {_id: "$category", cheapest: {$min: "$price"}}}
 ])
@@ -189,7 +189,18 @@ db.products.aggregate([
 
 
 
-//get the products with the review greater than 50 and cal the avg price of varients.
+//get the products with the review greater than 50 and cal the avg price of variants.
+db.products.aggregate([
+    {$match:
+     {"ratings.reviews": {$gt: 50}}
+     },
+
+     {$project:
+     {avgPrice: {$avg: "$price"},
+      _id: 0,
+       name:1, 
+       ratings:1} } 
+    ])
 
 
 //filter products with more than 50 reviews and Calcualte the avg price of variants for each product
